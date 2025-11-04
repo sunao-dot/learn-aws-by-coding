@@ -7,6 +7,7 @@ import os
 class Ec2ForDl(core.Stack):
 
     def __init__(self, scope: core.App, name: str, key_name: str, **kwargs) -> None:
+        
         super().__init__(scope, name, **kwargs)
 
         vpc = ec2.Vpc(
@@ -37,7 +38,7 @@ class Ec2ForDl(core.Stack):
             instance_type=ec2.InstanceType("g4dn.xlarge"), # <1>
             machine_image=ec2.MachineImage.generic_linux({
                 "us-east-1": "ami-060f07284bb6f9faf",
-                "ap-northeast-1": "ami-09c0c16fc46a29ed9"
+                "ap-northeast-1": "ami-067e1fb4991b7ccfb"
             }), # <2>
             vpc=vpc,
             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
